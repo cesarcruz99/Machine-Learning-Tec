@@ -1,0 +1,129 @@
+---
+title: "Algunas distribuciones de probabilidad"
+author: "Cesar Alejandro Cruz Salas"
+date: '2023-08-11'
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Problema 1
+
+```{r}
+miu = 10 
+sigma = 2
+x = seq(miu - 4*sigma, miu + 4*sigma, 0.01)
+y = dnorm(x,miu, sigma)
+plot(x,y, type = "l", col = "red", main = "Normal(10,2)")
+```
+##Problema 2
+ 
+```{r}
+ gl = 12 # Grados de libertad
+sigma = sqrt(gl/(gl-2))
+x = seq( -4*sigma, 4*sigma, 0.01)
+y = dt(x,gl)
+plot(x,y, type = "l", col = "blue", main = "T Student con gl = 12")
+```
+
+
+##Problema 3
+ 
+```{r}
+gl = 8
+sigma = sqrt(2*gl)
+x = seq( 0, miu + 8*sigma, 0.01)
+y = dchisq(x,gl)
+plot(x,y, type = "l", col = "green", main = "Chi2 con gl = 8")
+```
+##Problema 4
+ 
+```{r}
+v1 = 9
+v2 = 13
+sigma = sqrt(2)*v2*sqrt(v2+v1-2)/(sqrt(v2-4)*(v2-2)*sqrt(v1))
+x = seq( 0, miu + 8*sigma, 0.01)
+y = df(x,v1, v2)
+plot(x,y, type = "l", col = "red", main = "F con v1 = 9, v2 = 13")
+```
+##Problema 5
+ 
+```{r}
+a=1-pnorm(0.7)
+a
+
+b=pnorm(0.7)
+b
+ 
+c=pnorm(0.7000000000001)-pnorm(0.6999999999999)
+c
+
+```
+##Problema 6
+ 
+```{r}
+qnorm(0.45)
+```
+##Porblema 7
+```{r}
+miu=100
+sigma=7
+
+a=pnorm(87,miu,sigma)
+a
+b=1-pnorm(87,miu,sigma)
+b
+c=pnorm(110,miu,sigma)-pnorm(87,miu,sigma)
+c
+
+```
+##Porblema 8
+```{r}
+gl=10
+a=pt(0.5,gl)
+a
+b=1-pt(1.5,gl)
+b
+c=qt(0.05,gl)
+c
+```
+##Problema 9
+```{r}
+gl=6
+
+a=pchisq(3, gl)
+a
+b=1-pchisq(2, gl)
+b
+c=qchisq(0.95, gl) 
+c
+
+```
+##Problema 10
+
+```{r}
+v1=8
+v2=10
+
+a=pf(2, v1, v2)
+a
+b=1-pf(3, v1, v2)
+b
+c=qf(0.25, v1,v2) 
+c
+
+```
+
+##Problema 10
+```{r}
+miu=65
+sigma=20
+R=100*pnorm(60,miu,sigma)
+
+print(paste('el resultado es', round(R,2),'%'))
+
+```
